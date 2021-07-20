@@ -1,0 +1,26 @@
+.navbar {
+ &__top {
+     width: 100%;
+     display: flex;
+     justify-content: flex-end;
+ }
+
+ &__bottom {
+ 
+    &-logo {
+        & img {
+            height: 3rem;
+
+            @media screen and (max-width: 992px) {
+                height: 2.5rem;
+            }
+        }
+
+        @media screen and (max-width: 992px) {
+            display: flex !important;
+            justify-content: center;
+        }
+    }
+ }
+}
+

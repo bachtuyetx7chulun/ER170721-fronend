@@ -4,6 +4,6 @@
   "tabWidth": 2,
   "parser": "typescript",
   "trailingComma": "es5",
-  "printWidth": 120
-  
+  "printWidth": 120,
+  "endOfLine": "lf"
 }
