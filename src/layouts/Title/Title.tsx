@@ -8,7 +8,7 @@ function Title() {
 
   const onBlur = () => {
     setTimeout(() => {
-      setTitle('Bạn có ở đó không ?')
+      setTitle('')
     }, 500)
   }
 

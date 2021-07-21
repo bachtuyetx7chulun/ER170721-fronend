@@ -1,11 +1,13 @@
 import React from 'react'
-import Navbar from '../../../components/Navbar/Navbar'
+import Banner from '../../../components/Banner/Banner'
+import Header from '../../../layouts/Header/Header'
 import './index.scss'
 
 function HomePage() {
   return (
     <div className="homepage">
-      <Navbar />
+      <Header />
+      <Banner />
     </div>
   )
 }

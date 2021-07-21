@@ -1,4 +1,6 @@
 .navbar {
+    padding-bottom: 1rem;
+
  &__top {
      width: 100%;
      display: flex;
@@ -10,7 +12,6 @@
     &-logo {
         & img {
             height: 3rem;
-
             @media screen and (max-width: 992px) {
                 height: 2.5rem;
             }
