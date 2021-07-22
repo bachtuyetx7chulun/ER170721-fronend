@@ -43,14 +43,14 @@ const CBsSearch = styled(BsSearch)``
 
 function Navbar() {
   const [visible, setVisible] = useState(false)
-  const [changeLanguage, setChangeLanguage] = useState(true)
-  const { i18n, t } = useTranslation()
+  const [changeLanguage, setChangeLanguage] = useState(false)
+  const [defaultLanguage, setDefaultLanguage] = useState('')
+  const { t, i18n } = useTranslation()
 
   useEffect(() => {
     const setUpLanguage = () => {
-      setTimeout(() => {
-        setChangeLanguage(false)
-      }, 5000)
+      const currentLanguage = i18n.language
+      setDefaultLanguage(currentLanguage)
     }
     setUpLanguage()
   }, [])
@@ -63,9 +63,16 @@ function Navbar() {
     setVisible(false)
   }
 
-  const changeLang = (value) => {
-    console.log(value)
-    i18n.changeLanguage(`${value}`)
+  const changeLang = () => {
+    const language = defaultLanguage
+    if (language === 'vi') {
+      setDefaultLanguage('en')
+      i18n.changeLanguage('en')
+      setChangeLanguage(false)
+    } else {
+      setDefaultLanguage('vi')
+      i18n.changeLanguage('vi')
+    }
   }
 
   return (
@@ -77,16 +84,16 @@ function Navbar() {
               {t('help')}
             </CLink>
             <CLink type="secondary" href="https://ant.design" target="_blank">
-              trình theo dõi đơn hàng
+              {t('order')}
             </CLink>
             <CLink type="secondary" href="https://ant.design" target="_blank">
-              đăng ký bản tin
+              {t('subcribe')}
             </CLink>
             <CLink type="secondary" href="https://ant.design" target="_blank">
-              đăng nhập
+              {t('login')}
             </CLink>
             <Select
-              defaultValue="vi"
+              defaultValue={i18n.language}
               bordered={false}
               style={{ paddingRight: '0 !important' }}
               loading={changeLanguage}
@@ -105,7 +112,7 @@ function Navbar() {
                 </Option>
               </OptGroup>
               <OptGroup label="Global">
-                <Option value="Yiminghe">
+                <Option value="en">
                   <img
                     src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1200px-Flag_of_the_United_Kingdom.svg.png"
                     alt=""
@@ -146,7 +153,7 @@ function Navbar() {
                   </Option>
                 </OptGroup>
                 <OptGroup label="Global">
-                  <Option value="Yiminghe">
+                  <Option value="en">
                     <img
                       src="https://upload.wikimedia.org/wikipedia/en/thumb/a/ae/Flag_of_the_United_Kingdom.svg/1200px-Flag_of_the_United_Kingdom.svg.png"
                       alt=""
@@ -169,19 +176,19 @@ function Navbar() {
         <Col className="navbar__bottom-nav" xs={0} sm={0} md={0} lg={10} xl={8}>
           <CSpace size={20} align="end">
             <Link href="/">
-              <Text strong>NAM</Text>
+              <Text strong>{t('men')}</Text>
             </Link>
             <Link href="/">
-              <Text strong>NỮ</Text>
+              <Text strong>{t('women')}</Text>
             </Link>
             <Link href="/">
-              <Text strong>TRẺ EM</Text>
+              <Text strong>{t('child')}</Text>
             </Link>
             <Link href="/">
-              <Text>THỂ THAO</Text>
+              <Text>{t('sport')}</Text>
             </Link>
             <Link href="/">
-              <Text>CÁC NHÃN HIỆU</Text>
+              <Text>{t('brands')}</Text>
             </Link>
           </CSpace>
         </Col>
